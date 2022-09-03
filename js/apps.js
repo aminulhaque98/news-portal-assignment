@@ -58,23 +58,37 @@ displayNewsCategry = (newsPortal) => {
     <div class="col-md-8 p-2">
         <div class="card-body">
             <h5 class="card-title">${news.title}</h5>
-            <p class="card-text">${news.details.slice(0, 200)}</p>
+            <p class="card-text">${news.details}</p>
         </div>
 
+        <div class="d-flex justify-content-between ">
 
-        <div class="icon">
-        <div>
-        <img src="${news.author.img}" class=" img-fluid rounded-circle h-25 w-25  " alt="...">
+            <div class="d-flex w-25">
+            <div class=" ">
+            <img src="${news.author.img}" class=" img-fluid rounded-circle sizing align-items-center " alt="..."> 
+            <small class="">${news.author.name}</small>
+            
+        </div>
         
-        <i class="fa-regular fa-clock timing"></i><span>10h</span>
+            </div>
+
+                
+            <div>
+            <p class="fs-3 fw-semibold"> <i class="fa-solid fa-eye"></i> ${news.total_view}M  </p> 
+            </div>
+            <div>
+            <i class="fa-regular fa-star-sharp"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+
+            <div>
+            <button><i class="fa-solid fa-arrow-right"></i></button> 
+            </div>
         </div>
-        <div> <i class="fa-regular fa-comment-dots chating"></i><span>25</span>
-        </div>
-
-    </div>
-
-
-
     </div>
 
 `
@@ -85,7 +99,11 @@ displayNewsCategry = (newsPortal) => {
 
 
 
-
+{/* <div>
+        <p>nihad  </p> 
+        <small class="text-muted">${news.author.name}</small>
+        <p>nihad </p>
+         </div> */}
 
 
 manuCategories()
