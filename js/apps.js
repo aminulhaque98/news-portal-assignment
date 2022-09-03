@@ -57,22 +57,18 @@ displayNewsCategry = (newsPortal) => {
     </div>
     <div class="col-md-8 p-2">
         <div class="card-body">
-            <h5 class="card-title">${news.title}</h5>
-            <p class="card-text">${news.details}</p>
-        </div>
+            <h5 class="card-title">${news.title}</h5> <br>
+            <p class="card-text short-text">${news.details}</p>
+        </div> <br>
 
         <div class="d-flex justify-content-between ">
-
             <div class="d-flex w-25">
             <div class=" ">
             <img src="${news.author.img}" class=" img-fluid rounded-circle sizing align-items-center " alt="..."> 
-            <small class="">${news.author.name}</small>
-            
+            <p class="d-inline">${news.author.name}</p>
+            <small class=" "></small>
         </div>
-        
-            </div>
-
-                
+            </div>  
             <div>
             <p class="fs-3 fw-semibold"> <i class="fa-solid fa-eye"></i> ${news.total_view}M  </p> 
             </div>
@@ -86,7 +82,7 @@ displayNewsCategry = (newsPortal) => {
             </div>
 
             <div>
-            <button><i class="fa-solid fa-arrow-right"></i></button> 
+            <button onclick="loadDerailsInModal('${news._id}')" class="border-0" data-bs-toggle="modal" data-bs-target="#newsDetailsModel"><i class="fa-solid fa-arrow-right"></i></button> 
             </div>
         </div>
     </div>
@@ -96,14 +92,47 @@ displayNewsCategry = (newsPortal) => {
     }
 
 }
+/**show modal details here **/
+
+const loadDerailsInModal = async (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`
+    try {
+        const res = await fetch(url)
+        const data = await res.json()
+        displayDetails(data)
+    }
+    catch (error) {
+        console.log(error)
+    }
+
+}
+
+displayDetails = (details) => {
+    console.log(details)
+
+const title=document.getElementById('authorTitleLabel');
+title.innerText=details.data[0].author.name
+
+const detailsField=document.getElementById('newsDetailsBody')
+
+detailsField.innerHTML=`
+            <div class="col-md-4 p-4">
+                <img src="${details.data[0].image_url}" class="img-fluid rounded-start" alt="...">
+            </div>
+                <div class="col-md-8 p-2">
+                    <div class="card-body">
+                        <h5 class="card-title">is_trending:${details.data[0].others_info.is_trending}</h5> <br>
+                        <p class="card-text short-text">${details.data[0].details}</p>
+                    </div> <br>
+
+                 </div>
+
+`
 
 
+}
 
-{/* <div>
-        <p>nihad  </p> 
-        <small class="text-muted">${news.author.name}</small>
-        <p>nihad </p>
-         </div> */}
+
 
 
 manuCategories()

@@ -12,6 +12,11 @@
             height: 25%;
             width: 25%;
         }
+
+        .short-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/ba5a3eb11a.js" crossorigin="anonymous"></script>
@@ -47,10 +52,20 @@
 
         <!-------------- start items counts  --------->
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">00</span>
-            <input type="text" class="form-control" placeholder=" items found for category Entertainment"
-                aria-label="Username" aria-describedby="basic-addon1">
+            <p class="input-group-text w-100" id="basic-addon1"> <span> 00 </span> :Items found for category
+                Entertainment
+            </p>
         </div>
+
+        <!-- short veiw  -->
+
+        <div class="hstack gap-3">
+            <div class="bg-light ">Sort By View:</div>
+            <div class="bg-light border pe-10px">Default </div>
+            <div class="bg-light border ms-auto">Second item</div>
+            <div class="bg-light border">Third item</div>
+        </div>
+
         <!-- All news in a category  -->
         <section>
 
@@ -60,8 +75,27 @@
 
         </section>
 
+        <!--------------- Modal  ----------->
+        <section>
+            <div class="modal fade" id="newsDetailsModel" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="authorTitleLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="newsDetailsBody" class="modal-body">
 
-
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
