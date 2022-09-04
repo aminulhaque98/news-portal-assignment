@@ -32,6 +32,9 @@ displayManuCategories = (categories) => {
 
 newsLoadCategory = (category_id) => {
     console.log(category_id)
+    // start loader 
+    toggleSoinner(true);
+
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
     fetch(url)
         .then(res => res.json())
@@ -100,11 +103,15 @@ displayNewsCategry = (newsPortal) => {
 `
         newsContainer.appendChild(newsDiv)
     }
+    // end loader 
+    toggleSoinner(false);
 
 }
 /**show modal details here **/
 
 const loadDerailsInModal = async (news_id) => {
+    // loader start 
+    toggleSoinner(true);
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`
     try {
         const res = await fetch(url)
@@ -121,7 +128,7 @@ displayDetails = (details) => {
     console.log(details)
 
     const title = document.getElementById('authorTitleLabel');
-    title.innerText = details.data[0].author.name ? details.data[0].author.name : ' no news founded'
+    title.innerText = details.data[0].author.name ? details.data[0].author.name : ' no data abilable'
 
 
     const detailsField = document.getElementById('newsDetailsBody')
@@ -133,18 +140,29 @@ displayDetails = (details) => {
                 <div class="col-md-8 p-2">
                     <div class="card-body">
                         <h5 class="card-title">is_trending:${details.data[0].others_info.is_trending}</h5> <br>
+                        <p class="card-text short-text"><i class="fa-solid fa-eye"></i> ${details.data[0].total_view ? details.data[0].total_view : 'no data abilable'}M</p>
+
                         <p class="card-text short-text">${details.data[0].details}</p>
                     </div> <br>
 
                  </div>
 
 `
-
-
+    // loader end 
+    toggleSoinner(false);
 }
 
+// lodder 
+const toggleSoinner = inloading => {
+    const loadingSpinner = document.getElementById('loader')
+    if (inloading) {
+        loadingSpinner.classList.remove('d-none')
+    } else {
+        loadingSpinner.classList.add('d-none')
+    }
+}
 
 
 manuCategories()
 
-newsLoadCategory('07')
+// newsLoadCategory('07')
