@@ -5,6 +5,8 @@ function manuCategories() {
     fetch(url)
         .then(res => res.json())
         .then(data => displayManuCategories(data.data.news_category))
+
+        .catch(error => console.log(error))
 };
 
 
@@ -39,6 +41,8 @@ newsLoadCategory = (category_id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayNewsCategry(data.data))
+
+        .catch(error => console.log(error))
 };
 
 
