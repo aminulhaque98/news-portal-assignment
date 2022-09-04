@@ -14,7 +14,7 @@ const getDivOfManuCategory = document.getElementById('manu-categories');
 displayManuCategories = (categories) => {
     // console.log(categories);
     categories.forEach(category => {
-        // console.log(category)
+        console.log(category)
         const { category_id, category_name } = category;
 
         const createUl = document.createElement('ul');
@@ -42,6 +42,16 @@ newsLoadCategory = (category_id) => {
 displayNewsCategry = (newsPortal) => {
     console.log(newsPortal)
 
+    const CountNews = document.getElementById('counts-category')
+    const length = newsPortal.length;
+    console.log(length)
+
+    if (newsPortal.length) {
+        CountNews.innerText = newsPortal.length
+    } else {
+        CountNews.innerText = 'Items not founded'
+    }
+
     const newsContainer = document.getElementById('news-category-field')
     newsContainer.innerHTML = ``;
 
@@ -58,7 +68,7 @@ displayNewsCategry = (newsPortal) => {
     <div class="col-md-8 p-2">
         <div class="card-body">
             <h5 class="card-title">${news.title}</h5> <br>
-            <p class="card-text short-text">${news.details}</p>
+            <p class="card-text short-text">${news.details.slice(0, 500) + '...'}</p>
         </div> <br>
 
         <div class="d-flex justify-content-between ">
@@ -110,12 +120,13 @@ const loadDerailsInModal = async (news_id) => {
 displayDetails = (details) => {
     console.log(details)
 
-const title=document.getElementById('authorTitleLabel');
-title.innerText=details.data[0].author.name
+    const title = document.getElementById('authorTitleLabel');
+    title.innerText = details.data[0].author.name ? details.data[0].author.name : ' no news founded'
 
-const detailsField=document.getElementById('newsDetailsBody')
 
-detailsField.innerHTML=`
+    const detailsField = document.getElementById('newsDetailsBody')
+
+    detailsField.innerHTML = `
             <div class="col-md-4 p-4">
                 <img src="${details.data[0].image_url}" class="img-fluid rounded-start" alt="...">
             </div>
@@ -134,5 +145,6 @@ detailsField.innerHTML=`
 
 
 
-
 manuCategories()
+
+newsLoadCategory('07')
