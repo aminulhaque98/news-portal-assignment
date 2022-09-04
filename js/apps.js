@@ -41,13 +41,18 @@ newsLoadCategory = (category_id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayNewsCategry(data.data))
-
         .catch(error => console.log(error))
+
+
 };
 
 
 displayNewsCategry = (newsPortal) => {
     console.log(newsPortal)
+    // sort view 
+    newsPortal.sort((a, b) => {
+        return b.total_view - a.total_view;
+    });
 
     const CountNews = document.getElementById('counts-category')
     const length = newsPortal.length;
@@ -64,6 +69,8 @@ displayNewsCategry = (newsPortal) => {
 
     for (const news of newsPortal) {
         console.log(news);
+
+
 
         const newsDiv = document.createElement('div')
         newsDiv.classList.add('row', 'my-2', 'g-0', 'bg-light', 'border', 'shadow-lg', 'rounded')
@@ -169,4 +176,4 @@ const toggleSoinner = inloading => {
 
 manuCategories()
 
-// newsLoadCategory('07')
+newsLoadCategory('07')
