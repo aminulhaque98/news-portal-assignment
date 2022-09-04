@@ -9,20 +9,16 @@ function manuCategories() {
         .catch(error => console.log(error))
 };
 
-
+// manu cetagory show 
 const getDivOfManuCategory = document.getElementById('manu-categories');
-// console.log(createDivOfNav)
 
 displayManuCategories = (categories) => {
-    // console.log(categories);
     categories.forEach(category => {
-        console.log(category)
+
         const { category_id, category_name } = category;
 
         const createUl = document.createElement('ul');
-        // console.log(createUl)
         createUl.classList.add('text-primary', 'fs-4', 'createUl-hover');
-
         createUl.innerHTML = `<a onclick="newsLoadCategory('${category_id}')" class="text-decoration-none " )">${category_name}</a>`;
 
         getDivOfManuCategory.appendChild(createUl)
@@ -46,7 +42,7 @@ newsLoadCategory = (category_id) => {
 
 };
 
-
+// All news in a category display 
 displayNewsCategry = (newsPortal) => {
     console.log(newsPortal)
     // sort view 
@@ -56,21 +52,17 @@ displayNewsCategry = (newsPortal) => {
 
     const CountNews = document.getElementById('counts-category')
     const length = newsPortal.length;
-    console.log(length)
-
+    // found length 
     if (newsPortal.length) {
         CountNews.innerText = newsPortal.length
     } else {
         CountNews.innerText = 'Items not founded'
     }
-
+    // alll details  
     const newsContainer = document.getElementById('news-category-field')
     newsContainer.innerHTML = ``;
 
     for (const news of newsPortal) {
-        console.log(news);
-
-
 
         const newsDiv = document.createElement('div')
         newsDiv.classList.add('row', 'my-2', 'g-0', 'bg-light', 'border', 'shadow-lg', 'rounded')
@@ -135,6 +127,7 @@ const loadDerailsInModal = async (news_id) => {
 
 }
 
+// display Modal Details
 displayDetails = (details) => {
     console.log(details)
 
@@ -173,7 +166,8 @@ const toggleSoinner = inloading => {
     }
 }
 
+// call function 
 
 manuCategories()
-
+// defould display call function 
 newsLoadCategory('07')

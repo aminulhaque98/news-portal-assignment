@@ -34,14 +34,15 @@
                 <h2 class="navbar-brand fs-2 "> <span class="text-primary fw-bold  p-2">Compound</span> News</h2>
                 <form class="d-flex" role="search">
                     <button class="btn btn-outline-success me-2" type="submit">Home</button>
-                    <button onclick="document.location='http://127.0.0.1:5500/card.html'"
-                        class="btn btn-outline-success me-2" type="submit">Blog</button>
+                    <button onclick="document.location.href='card.html'" class="btn btn-outline-success me-2"
+                        type="submit">Blog</button>
                     <!-- <img src="images/pic-for-assign.png" class="rounded-circle h-25 w-25" alt=""> -->
                 </form>
             </div>
         </nav>
     </header>
     <hr>
+
     <!--===== main part start here ============ -->
     <main class="container">
         <!----------all manu bar start here ------- -->
@@ -67,7 +68,7 @@
             <div class="bg-light border fs-4">Trending</div>
         </div>
 
-        <!-- All news in a category  -->
+        <!-- All news in a category added -->
         <section>
 
             <div id="news-category-field" class="mb-3 " style="width: 100%;">
@@ -75,7 +76,7 @@
             </div>
 
         </section>
-        <!-------------- spinner -------- -->
+        <!-------------- spinner loaded-------- -->
         <section id="loader" class="d-none">
             <div style="height: 300px;" class="d-flex justify-content-center align-items-center">
                 <div class="spinner-border text-primary" role="status">
@@ -85,7 +86,7 @@
         </section>
 
 
-        <!--------------- Modal  ----------->
+        <!--------------- Modal details ----------->
         <section>
             <div class="modal fade" id="newsDetailsModel" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
