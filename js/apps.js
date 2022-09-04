@@ -170,4 +170,4 @@ const toggleSoinner = inloading => {
 
 manuCategories()
 // defould display call function 
-newsLoadCategory('07')
+newsLoadCategory('04')

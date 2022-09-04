@@ -34,8 +34,9 @@
                 <h2 class="navbar-brand fs-2 "> <span class="text-primary fw-bold  p-2">Compound</span> News</h2>
                 <form class="d-flex" role="search">
                     <button class="btn btn-outline-success me-2" type="submit">Home</button>
-                    <button onclick="document.location.href='card.html'" class="btn btn-outline-success me-2"
-                        type="submit">Blog</button>
+
+                    <button onclick="blog()" class="btn btn-outline-success me-2" type="submit">
+                        <a class="text-decoration-none text-success" href="card.html">Blog</a></button>
                     <!-- <img src="images/pic-for-assign.png" class="rounded-circle h-25 w-25" alt=""> -->
                 </form>
             </div>
@@ -54,7 +55,7 @@
 
         <!-------------- start items counts show --------->
         <div class="input-group mb-3">
-            <p class="input-group-text fs-5 w-100 " id="counts-category"> <span> 00 </span> :Items found for category
+            <p class="input-group-text fs-5 w-100 " id="counts-category"> <span> </span> :Items found for category
                 Entertainment
             </p>
         </div>
